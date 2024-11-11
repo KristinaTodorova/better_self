@@ -32,11 +32,11 @@ class MainApp extends StatelessWidget {
     } else {
       final int hour = DateTime.now().hour;
       if (hour >= 6 && hour < 12) {
-        return '/tasks';  // Morning: Go to Tasks
+        return '/tasks';  // In the morning: Go to Tasks Screen
       } else if (hour >= 12 && hour < 17) {
-        return '/routine';  // Afternoon: Go to Routine
+        return '/routine';  // In the afternoon: Go to Routine Screen
       } else {
-        return '/grateful';  // Evening: Go to Grateful
+        return '/grateful';  // In the evening: Go to Grateful Screen
       }
     }
   }

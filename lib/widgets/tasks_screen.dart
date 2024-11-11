@@ -20,7 +20,7 @@ class Task {
         'date': date.toIso8601String(),
       };
 
-  // Create from JSON (Map) when loading from Hive
+  // Create from JSON when loading from Hive
   factory Task.fromJson(Map<String, dynamic> json) {
     return Task(
       title: json['title'] as String,
@@ -117,36 +117,60 @@ class TaskScreen extends StatelessWidget {
   final RoutineController routineController = Get.put(RoutineController());
   final _formKey = GlobalKey<FormBuilderState>();
 
+  static const Color darkPurple = Color.fromARGB(255, 92, 64, 134);
+
   @override
   Widget build(BuildContext context) {
+      double screenWidth = MediaQuery.of(context).size.width;
+
     return Scaffold(
-      appBar: CustomAppBar(),
-      body: FormBuilder(
-      key: _formKey,
-      child: Column(
+      appBar: const CustomAppBar(),
+      body:  Row(
         children: [
-          const Text(
-              'Your top priorities', // Heading text
-              style: TextStyle(
-                fontSize: 32,         // Large font size for h1 equivalent
-                fontWeight: FontWeight.bold, // Bold font weight
+          if (screenWidth > 768)
+            CustomBottomNavBar(),
+          Expanded(child: 
+      Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: FormBuilder(
+          key: _formKey,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Row(children: [ Icon(
+                      Icons.sunny,
+                      color: Color.fromARGB(255, 92, 64, 134),
+                      size: 50,
+                    ),
+               Text(
+                'YOUR TOP PRIORITIES',
+                style: TextStyle(
+                  fontSize: 32,
+                  fontWeight: FontWeight.bold,
+                  color: darkPurple,
+                ),
               ),
-            ),
-            const Text(
-              'Focus on what matters most! Enter up to 3 tasks for today to boost your productivity and avoid overwhelm. The "Law of Three" helps you stay efficient and focused—three tasks at a time is all you need for better results.', // Heading text
-              style: TextStyle(
-                fontSize: 10,         // Large font size for h1 equivalent
-                fontStyle: FontStyle.italic, // Italic font weight
+             SizedBox(height: 40),
+             ],
+             ),
+              const Text(
+                'Focus on what matters most! Enter up to 3 tasks for today to boost your productivity and avoid overwhelm. The "Law of Three" helps you stay efficient and focused—three tasks at a time is all you need for better results.',
+                style: TextStyle(
+                  fontSize: 15,
+                  fontWeight: FontWeight.w500,
+                  color: Colors.black,
+                ),
               ),
-            ),
-            const Text(
-              'What are the three most important tasks you want to focus on today?', // Heading text
-              style: TextStyle(
-                fontSize: 15,         // Large font size for h1 equivalent
-                fontWeight: FontWeight.bold, // Bold font weight
+              const SizedBox(height: 20),
+              const Text(
+                'What are the three most important tasks you want to focus on today?',
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
-            ),
-            FormBuilderTextField(
+              const SizedBox(height: 15),
+              FormBuilderTextField(
                 name: 'taskInput',
                 decoration: InputDecoration(
                   hintText: 'Today I want to...',
@@ -154,65 +178,64 @@ class TaskScreen extends StatelessWidget {
                     borderRadius: BorderRadius.circular(8.0),
                   ),
                   suffixIcon: IconButton(
-                    icon: const Icon(Icons.add, color: Colors.black), // Plus icon inside the input field
+                    icon: const Icon(Icons.add, color: Colors.black),
                     onPressed: () {
-
                       if (taskController.priorityTasks.where((task) {
-                          final now = DateTime.now();
-                          return task.date.year == now.year &&
-                                task.date.month == now.month &&
-                                task.date.day == now.day;
-                        }).length >= 3) {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(
-                          content: Text(
-                            'I like the optimism, but try to stick to 3 really important tasks first - if one of them is not a priority, replace it with something more meaningful.',
+                        final now = DateTime.now();
+                        return task.date.year == now.year &&
+                            task.date.month == now.month &&
+                            task.date.day == now.day;
+                      }).length >= 3) {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(
+                            content: Text(
+                              'I like the optimism, but try to stick to 3 really important tasks first - if one of them is not a priority, replace it with something more meaningful.',
+                            ),
                           ),
-                        ),
-                      );
-                    } else if (_formKey.currentState?.saveAndValidate() ?? false) {
-                      // Add the new task if the limit hasn’t been reached
-                      String taskTitle = _formKey.currentState?.fields['taskInput']?.value ?? '';
-                      taskController.addPriorityTask(taskTitle);
-                      _formKey.currentState?.reset(); // Clear input field
-                    }
-                      // Save and validate form input, then add to list
-                      else if (_formKey.currentState?.saveAndValidate() ?? false) {
-                        String tasktitle = _formKey.currentState?.fields['taskInput']?.value ?? '';
-                        taskController.addPriorityTask(tasktitle);
+                        );
+                      } else if (_formKey.currentState?.saveAndValidate() ?? false) {
+
+                        String taskTitle = _formKey.currentState?.fields['taskInput']?.value ?? '';
+                        taskController.addPriorityTask(taskTitle);
                         _formKey.currentState?.reset(); // Clear input field
                       }
                     },
                   ),
                 ),
               ),
+              const SizedBox(height: 20),
 
-              Expanded(child: Obx(() => ListView.builder(
-                itemCount: taskController.priorityTasks.length,
-                itemBuilder: (context,index) {
-                  final task = taskController.priorityTasks[index];
-                  final now = DateTime.now();
+              Expanded(
+                child: Obx(
+                  () => ListView.builder(
+                    itemCount: taskController.priorityTasks.length,
+                    itemBuilder: (context, index) {
+                      final task = taskController.priorityTasks[index];
+                      final now = DateTime.now();
 
-                  // Check if task was added today
-                  final isToday = task.date.year == now.year &&
-                        task.date.month == now.month &&
-                        task.date.day == now.day;
-                  if (isToday) {
-                  return TaskCard(
-                        text: taskController.priorityTasks[index].title,
-                        index: index,
-                      );
-                    }
-                    else {return const SizedBox.shrink();}
-                },
-              )
+                      final isToday = task.date.year == now.year &&
+                          task.date.month == now.month &&
+                          task.date.day == now.day;
+                      if (isToday) {
+                        return Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 8.0),
+                          child: TaskCard(
+                            text: taskController.priorityTasks[index].title,
+                            index: index,
+                          ),
+                        );
+                      } else {
+                        return const SizedBox.shrink();
+                      }
+                    },
+                  ),
+                ),
               ),
-              ),
-        ],
-      ),
-    ),
-    
-    bottomNavigationBar: CustomBottomNavBar(),
+            ],
+          ),
+        ),
+      ),),],),
+      bottomNavigationBar: screenWidth <= 768 ? CustomBottomNavBar() : null,
     );
   }
 }
@@ -224,8 +247,10 @@ class TaskCard extends StatelessWidget {
 
   TaskCard({required this.text, required this.index});
 
+  static const Color darkPurple = Color.fromARGB(255, 92, 64, 134);
+
   @override
-  Widget build(BuildContext context){
+  Widget build(BuildContext context) {
     return Card(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       elevation: 2,
@@ -234,13 +259,14 @@ class TaskCard extends StatelessWidget {
           () => Checkbox(
             value: taskController.priorityTasks[index].isChecked,
             onChanged: (bool? value) {
-              taskController.toggleTask(index); // Update state in controller
+              taskController.toggleTask(index);
             },
+            activeColor: darkPurple,
           ),
         ),
         title: Text(
           text,
-          style: const TextStyle(fontSize: 16),
+          style: const TextStyle(fontSize: 18),
         ),
         trailing: IconButton(
           icon: const Icon(Icons.remove, color: Colors.black),

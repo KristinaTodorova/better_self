@@ -2,10 +2,9 @@ import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 
 class NavigationController extends GetxController {
-  // Observable to track the current index for navigation
+  // Observable to track the current index for the navigation
   var currentIndex = 1.obs;
 
-  // Function to navigate to a specific screen by index
   void navigateToPage(int index) {
     currentIndex.value = index;
 
@@ -23,20 +22,17 @@ class NavigationController extends GetxController {
   }
   
   void goToToday() {
-        final int hour = DateTime.now().hour;
+    
+    final int hour = DateTime.now().hour;
 
     // Determine which route to navigate to based on the time of day
     if (hour >= 6 && hour < 12) {
-      // Morning: Navigate to /tasks
       Future.microtask(() => Get.toNamed('/tasks'));
     } else if (hour >= 12 && hour < 17) {
-      // Afternoon: Navigate to /routine
       Future.microtask(() => Get.toNamed('/routine/:type'));
     } else {
-      // Evening or other times: Navigate to /grateful
       Future.microtask(() => Get.toNamed('/grateful'));
     }
-
   }
 }
 
@@ -45,8 +41,39 @@ class CustomBottomNavBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double screenWidth = MediaQuery.of(context).size.width;
+
+     if (screenWidth > 768) {
+      return Obx(() => 
+              NavigationRail(
+                selectedIndex: navigationController.currentIndex.value,
+                onDestinationSelected: navigationController.navigateToPage,
+                extended: true, // Show the labels next to the icons
+                labelType: NavigationRailLabelType.none, // Labels should be next to the icons
+                backgroundColor: const Color.fromARGB(255, 239, 229, 251),
+                selectedIconTheme: const IconThemeData(color: Color.fromARGB(255, 92, 64, 134)),
+                selectedLabelTextStyle: const TextStyle(color: Color.fromARGB(255, 92, 64, 134)),
+                unselectedIconTheme: const IconThemeData(color: Colors.grey),
+                unselectedLabelTextStyle: const TextStyle(color: Colors.grey),
+                destinations: const [
+                  NavigationRailDestination(
+                    icon: Icon(Icons.calendar_today),
+                    label: Text('Plan'),
+                  ),
+                  NavigationRailDestination(
+                    icon: Icon(Icons.favorite),
+                    label: Text('Now'),
+                  ),
+                  NavigationRailDestination(
+                    icon: Icon(Icons.insights),
+                    label: Text('Progress'),
+                  ),
+                ],
+              ));
+    } else {
     return Obx(() => BottomNavigationBar(
           currentIndex: navigationController.currentIndex.value,
+          selectedItemColor: const Color.fromARGB(255, 92, 64, 134),
           onTap: navigationController.navigateToPage,
           items: const [
             BottomNavigationBarItem(
@@ -58,10 +85,11 @@ class CustomBottomNavBar extends StatelessWidget {
               label: 'Now',
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.bar_chart),
+              icon: Icon(Icons.insights),
               label: 'Progress',
             ),
           ],
         ));
+  }
   }
 }

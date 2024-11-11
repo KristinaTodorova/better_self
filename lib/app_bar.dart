@@ -6,19 +6,14 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      title: Row(
+      title: const Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Image.asset(
-            'logo.png', // Path to the logo image file in assets
-            width: 40,          // Set logo width
-            height: 40,         // Set logo height
-          ),
-          const SizedBox(width: 10), // Space between logo and text
-          const Text(
+           SizedBox(width: 10),
+           Text(
             'BetterSelf',
             style: TextStyle(
-              fontSize: 20,      // Customize font size for app name
+              fontSize: 20, 
               fontWeight: FontWeight.bold,
             ),
           ),

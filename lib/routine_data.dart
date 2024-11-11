@@ -64,10 +64,10 @@ var allRoutines = <Routine>[
     index: 0,
     tasks: <RoutineTask>[
       RoutineTask(title: 'Drink Water', subtitle: '2l per day', icon: Icons.local_drink),
-      RoutineTask(title: 'Set your goals for the day', subtitle: 'You can find them in the plan section', icon: Icons.checklist),
+      RoutineTask(title: 'Set your goals for the day', subtitle: 'You can find them in the plan section', icon: Icons.flag),
       RoutineTask(title: 'Exercise', subtitle: '30 mins a day', icon: Icons.fitness_center),
-      RoutineTask(title: 'Focused work', subtitle: '2 hours', icon: Icons.book),
-      RoutineTask(title: 'Sleep 8 Hours', subtitle: 'Regular sleep schedule', icon: Icons.bedtime),
+      RoutineTask(title: 'Focused work', subtitle: '2 hours', icon: Icons.work),
+      RoutineTask(title: 'Sleep 8 Hours', subtitle: 'Regular sleep schedule', icon: Icons.bed),
     ],
   ),
   Routine(
@@ -76,9 +76,9 @@ var allRoutines = <Routine>[
     index: 1,
     tasks: <RoutineTask>[
       RoutineTask(title: 'Drink Water', subtitle: 'Start your day hydrated', icon: Icons.local_drink),
-      RoutineTask(title: 'Eat a healthy breakfast', subtitle: 'Morning stretch or workout', icon: Icons.fitness_center),
-      RoutineTask(title: 'Set your goals for the day', subtitle: 'You can find them in the plan section', icon: Icons.checklist),
-      RoutineTask(title: 'Read a book or listen to something inspiring', subtitle: 'Expand your mind', icon: Icons.book),
+      RoutineTask(title: 'Eat a healthy breakfast', subtitle: 'Morning stretch or workout', icon: Icons.restaurant),
+      RoutineTask(title: 'Set your goals for the day', subtitle: 'You can find them in the plan section', icon: Icons.flag),
+      RoutineTask(title: 'Read a book or listen to something inspiring', subtitle: 'Expand your mind', icon: Icons.menu_book),
       RoutineTask(title: 'Meditate', subtitle: '10 mins of mindfulness', icon: Icons.self_improvement),
     ],
   ),
@@ -88,10 +88,10 @@ var allRoutines = <Routine>[
     index: 2,
     tasks: <RoutineTask>[
       RoutineTask(title: 'Drink Water', subtitle: 'Start your day hydrated', icon: Icons.local_drink),
-      RoutineTask(title: 'Eat balanced meals', subtitle: 'Make sure you get enough protein, healthy fats and whole carbs', icon: Icons.fitness_center),
+      RoutineTask(title: 'Eat balanced meals', subtitle: 'Make sure you get enough protein, healthy fats and whole carbs', icon: Icons.restaurant),
       RoutineTask(title: 'Exercise', subtitle: 'Choose your favourite strength or cardio workout', icon: Icons.fitness_center),
-      RoutineTask(title: 'Walk 10.000 steps', subtitle: 'Build stamina and increase your energy levels', icon: Icons.local_drink),
-      RoutineTask(title: 'Track Progress', subtitle: 'Log your results', icon: Icons.track_changes),
+      RoutineTask(title: 'Walk 10.000 steps', subtitle: 'Build stamina and increase your energy levels', icon: Icons.directions_walk),
+      RoutineTask(title: 'Track Progress', subtitle: 'Log your results', icon: Icons.assessment),
     ],
   ),
   Routine(
@@ -100,9 +100,9 @@ var allRoutines = <Routine>[
     index: 3,
     tasks: <RoutineTask>[
       RoutineTask(title: 'Limit screen time in the evening', subtitle: 'At least 1 hour before bed', icon: Icons.phone_disabled),
-      RoutineTask(title: 'No coffee after 2pm', subtitle: 'Consistent schedule', icon: Icons.alarm),
-      RoutineTask(title: 'Read a book', subtitle: 'Wind down', icon: Icons.book),
-      RoutineTask(title: 'Express gratitude', subtitle: 'Write down the things you are grateful for in the gratefulness tab', icon: Icons.self_improvement),
+      RoutineTask(title: 'No coffee after 2pm', subtitle: 'Consistent schedule', icon: Icons.coffee),
+      RoutineTask(title: 'Read a book', subtitle: 'Wind down', icon: Icons.menu_book),
+      RoutineTask(title: 'Express gratitude', subtitle: 'Write down the things you are grateful for in the gratefulness tab', icon: Icons.favorite),
       RoutineTask(title: 'Meditate', subtitle: '10 mins of mindfulness', icon: Icons.self_improvement),
     ],
   ),
@@ -111,11 +111,11 @@ var allRoutines = <Routine>[
     icon: Icons.school,
     index: 4,
     tasks: <RoutineTask>[
-      RoutineTask(title: 'Focused work on programming projects', subtitle: '+ looking for a place to deploy all said projects for free.', icon: Icons.menu_book),
-      RoutineTask(title: 'Wait an eternity for lunch at Taffa', subtitle: 'you know the Bolognese is worth it.', icon: Icons.edit),
-      RoutineTask(title: 'Have a hot chocolate @ DF Kitchen', subtitle: 'and convince yourself not to steal the cute cups.', icon: Icons.feedback),
+      RoutineTask(title: 'Focused work on programming projects', subtitle: '+ looking for a place to deploy all said projects for free.', icon: Icons.computer),
+      RoutineTask(title: 'Wait an eternity for lunch at Taffa', subtitle: 'you know the Bolognese is worth it.', icon: Icons.restaurant),
+      RoutineTask(title: 'Have a hot chocolate @ DF Kitchen', subtitle: 'and convince yourself not to steal the cute cups.', icon: Icons.coffee),
       RoutineTask(title: 'Spend 12 hours at Design Factory', subtitle: 'crying is forbidden in the silent area.', icon: Icons.lightbulb),
-      RoutineTask(title: 'Get 8 hours of sleep', subtitle: '(optional)', icon: Icons.checklist),
+      RoutineTask(title: 'Get 8 hours of sleep', subtitle: '(optional)', icon: Icons.bed),
     ],
   ),
-].obs; // .obs to make it a reactive list if using GetX
+].obs;

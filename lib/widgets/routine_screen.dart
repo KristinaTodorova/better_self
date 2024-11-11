@@ -6,23 +6,22 @@ import 'package:hive_ce_flutter/hive_flutter.dart';
 
 class RoutineController extends GetxController {
   final storage = Hive.box("storage");
-  var selectedRoutine = Rx<Routine?>(null); // Reactive variable for the selected routine
+  var selectedRoutine = Rx<Routine?>(null);
 
   @override
-void onInit() {
-  super.onInit();
-  final storedRoutine = storage.get('selectedRoutine');
-  if (storedRoutine != null) {
-    selectedRoutine.value = Routine.fromJson(Map<String, dynamic>.from(storedRoutine));
+  void onInit() {
+    super.onInit();
+    final storedRoutine = storage.get('selectedRoutine');
+    if (storedRoutine != null) {
+      selectedRoutine.value = Routine.fromJson(Map<String, dynamic>.from(storedRoutine));
+    }
   }
-}
 
-  RoutineController(){
+  RoutineController() {
     final savedRoutineIndex = storage.get('selectedRoutineIndex');
     if (savedRoutineIndex != null) {
       selectedRoutine.value = allRoutines[savedRoutineIndex];
-    }
-    else{
+    } else {
       Get.toNamed('/routine');
     }
   }
@@ -45,18 +44,14 @@ void onInit() {
   }
 
   void toggleRoutineTask(int index) {
-     if (selectedRoutine.value != null) {
-    // Toggle the current value of isChecked
-    selectedRoutine.value?.tasks[index].isChecked = !selectedRoutine.value!.tasks[index].isChecked;
-    // Save the updated routine to storage
-    storage.put(
-      'selectedRoutine',
-      selectedRoutine.value?.toJson(), // Store the updated Routine object
-    );
-
-    // Refresh the selectedRoutine to update the UI
-    selectedRoutine.refresh();
-  }
+    if (selectedRoutine.value != null) {
+      selectedRoutine.value?.tasks[index].isChecked = !selectedRoutine.value!.tasks[index].isChecked;
+      storage.put(
+        'selectedRoutine',
+        selectedRoutine.value?.toJson(), // Store the updated Routine object
+      );
+      selectedRoutine.refresh();
+    }
   }
 }
 
@@ -72,30 +67,23 @@ class RoutineScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            const SizedBox(height: 8),
             const Text(
-              'Progress is not achieved by luck or accident, but by working on yourself daily.',
+              'DAILY ROUTINE',
               style: TextStyle(
-                fontSize: 10,
-                fontStyle: FontStyle.italic,
+                fontSize: 28,
+                fontWeight: FontWeight.bold,
+                color: Color.fromARGB(255, 92, 64, 134),
               ),
             ),
             const SizedBox(height: 8),
             const Text(
-              'Daily routine',
-              style: TextStyle(
-                fontSize: 20,
-              ),
-            ),
-            const SizedBox(height: 8),
-            const Text(
-              'Choose a routine based on your goals:',
+              'Choose a routine based on your goals (click to view details):',
               style: TextStyle(
                 fontSize: 15,
               ),
             ),
             const SizedBox(height: 20),
-
-            // Wrap the ListView in Expanded
             Expanded(
               child: Obx(
                 () => ListView.builder(
@@ -127,10 +115,10 @@ class RoutineCard extends StatelessWidget {
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       elevation: 2,
       child: ExpansionTile(
-        leading: Icon(routine.icon, color: Colors.blueAccent),
+        leading: Icon(routine.icon, color: const Color.fromARGB(255, 92, 64, 134)),
         title: Text(
           text,
-          style: const TextStyle(fontSize: 16),
+          style: const TextStyle(fontSize: 18),
         ),
         children: routine.tasks.map((task) {
           return ListTile(

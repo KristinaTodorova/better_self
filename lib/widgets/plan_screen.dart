@@ -9,80 +9,115 @@ class PlanScreen extends StatelessWidget {
   
   @override
   Widget build(BuildContext context) {
+    const Color darkPurple = Color.fromARGB(255, 92, 64, 134);
+    double screenWidth = MediaQuery.of(context).size.width;
 
-    return  Scaffold(
+    return Scaffold(
       appBar: const CustomAppBar(),
-      body:
-        Column(
-        children:[
-         Text(
-              'Welcome back, ${nameController.name}!', // Heading text
+      body: Row(
+        children: [
+          if (screenWidth > 768)
+            CustomBottomNavBar(),
+          Expanded(
+          child: Padding(
+          padding: const EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const SizedBox(height: 20),
+            Text(
+              'Welcome back, ${nameController.name}!',
               style: const TextStyle(
-                fontSize: 32,         // Large font size for h1 equivalent
-                fontWeight: FontWeight.bold, // Bold font weight
+                fontSize: 25,
+                fontWeight: FontWeight.bold,
               ),
             ),
-           Card(
-              elevation: 4,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(12),
-              ),
-              child: ListTile(
-                leading: const Icon(Icons.sunny, color: Colors.yellow, size: 40),
-                title: const Text(
-                  'Plan Your Day',
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                ),
-                subtitle: const Text('Set your top priorities and tasks.'),
-                onTap: () {
-                  Get.toNamed('/tasks');
-                },
-              ),
-            ),
-            const SizedBox(height: 16),
-
-            // Second Card
+            const SizedBox(height: 20),
             Card(
               elevation: 4,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(12),
               ),
-              child: ListTile(
-                leading: const Icon(Icons.self_improvement, color: Color((0xFF6C7A89)), size: 40),
-                title: const Text(
-                  'Track Your Routine',
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              child: SizedBox(
+                height: 110,
+                child: Center(
+                  child: ListTile(
+                    contentPadding: const EdgeInsets.symmetric(horizontal: 24.0),
+                    leading: const Icon(Icons.sunny, color: darkPurple, size: 50),
+                    title: const Text(
+                      'Plan Your Day',
+                      style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                    ),
+                    subtitle: const Text(
+                      'Set your top priorities and tasks.',
+                      style: TextStyle(fontSize: 18),
+                    ),
+                    onTap: () {
+                      Get.toNamed('/tasks');
+                    },
+                  ),
                 ),
-                subtitle: const Text('Keep up with your daily habits.'),
-                onTap: () {
-                  Get.toNamed('/routine/:type');
-                },
               ),
             ),
-            const SizedBox(height: 16),
-
-            // Third Card
+            const SizedBox(height: 20),
             Card(
               elevation: 4,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(12),
               ),
-              child: ListTile(
-                leading: const Icon(Icons.nightlight_round, color: Colors.purple, size: 40),
-                title: const Text(
-                  'Reflect with Gratitude',
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              child: SizedBox(
+                height: 110,
+                child: Center(
+                  child: ListTile(
+                    contentPadding: const EdgeInsets.symmetric(horizontal: 24.0),
+                    leading: const Icon(Icons.self_improvement, color: darkPurple, size: 50),
+                    title: const Text(
+                      'Track Your Routine',
+                      style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold), 
+                    ),
+                    subtitle: const Text(
+                      'Keep up with your daily habits.',
+                      style: TextStyle(fontSize: 18),
+                    ),
+                    onTap: () {
+                      Get.toNamed('/routine/:type');
+                    },
+                  ),
                 ),
-                subtitle: const Text('List things you’re grateful for.'),
-                onTap: () {
-                  Get.toNamed('/grateful');
-                },
+              ),
+            ),
+            const SizedBox(height: 20),
+            Card(
+              elevation: 4,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(12),
+              ),
+              child: SizedBox(
+                height: 110,
+                child: Center(
+                  child: ListTile(
+                    contentPadding: const EdgeInsets.symmetric(horizontal: 24.0),
+                    leading: const Icon(Icons.nightlight_round, color: darkPurple, size: 50),
+                    title: const Text(
+                      'Reflect with Gratitude',
+                      style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                    ),
+                    subtitle: const Text(
+                      'List things you’re grateful for.',
+                      style: TextStyle(fontSize: 18),
+                    ),
+                    onTap: () {
+                      Get.toNamed('/grateful');
+                    },
+                  ),
+                ),
               ),
             ),
           ],
-      ),
-      bottomNavigationBar: CustomBottomNavBar(),
-      );
+        ),
+      ),),
+     ],),
+      bottomNavigationBar: screenWidth <= 768 ? CustomBottomNavBar() : null
+    );
   }
-
 }
