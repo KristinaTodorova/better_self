@@ -3,65 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:better_self/app_bar.dart';
 import 'package:better_self/nav_bar.dart';
-import 'package:hive_ce_flutter/hive_flutter.dart';
+import 'package:better_self/controllers/nav_controller.dart';
+import 'package:better_self/controllers/grateful_controller.dart';
 
-class GratitudeItem {
-  final String text;
-  final DateTime date;
-
-  GratitudeItem({required this.text, required this.date});
-
-  Map<String, dynamic> toJson() => {
-        'text': text,
-        'date': date.toIso8601String(),
-      };
-
-  factory GratitudeItem.fromJson(Map<String, dynamic> json) {
-    return GratitudeItem(
-      text: json['text'] as String,
-      date: DateTime.parse(json['date'] as String),
-    );
-  }
-}
-
-class GratefulController extends GetxController {
-  final storage = Hive.box("storage");
-  var gratitudeList = <GratitudeItem>[
-    GratitudeItem(text: "design factory", date: DateTime.now()),
-  ].obs;
-
-  GratefulController() {
-    final storedList = storage.get('gratitudeList') as List<dynamic>?;
-    if (storedList != null) {
-      gratitudeList.value = storedList
-          .map((item) => GratitudeItem.fromJson(Map<String, dynamic>.from(item)))
-          .toList();
-    }
-  }
-
-  void addGratitudeItem(String item) {
-    if (item.isNotEmpty) {
-      final newItem = GratitudeItem(text: item, date: DateTime.now());
-      gratitudeList.add(newItem);
-      storage.put(
-        'gratitudeList',
-        gratitudeList.map((item) => item.toJson()).toList(),
-      );
-    }
-  }
-
-  int get gratituteItems {
-    return gratitudeList.length;
-  }
-
-  List<GratitudeItem> get todayGratitudeItems {
-    final today = DateTime.now();
-    return gratitudeList.where((item) =>
-        item.date.year == today.year &&
-        item.date.month == today.month &&
-        item.date.day == today.day).toList();
-  }
-}
 
 class GratefulScreen extends StatelessWidget {
   final GratefulController gratefulController = Get.put(GratefulController());

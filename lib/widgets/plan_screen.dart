@@ -1,5 +1,5 @@
 import 'package:better_self/app_bar.dart';
-import 'package:better_self/widgets/start_screen.dart';
+import 'package:better_self/controllers/name_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:better_self/nav_bar.dart';
 import 'package:get/get.dart';

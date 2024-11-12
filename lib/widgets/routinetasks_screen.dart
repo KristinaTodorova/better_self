@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'routine_screen.dart';
+import 'package:better_self/controllers/routine_controller.dart';
 import 'package:better_self/nav_bar.dart';
 import 'package:better_self/app_bar.dart';
 

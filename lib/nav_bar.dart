@@ -1,40 +1,6 @@
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
-
-class NavigationController extends GetxController {
-  // Observable to track the current index for the navigation
-  var currentIndex = 1.obs;
-
-  void navigateToPage(int index) {
-    currentIndex.value = index;
-
-    switch (index) {
-      case 0:
-        Get.toNamed('/plan');
-        break;
-      case 1:
-        goToToday();
-        break;
-      case 2:
-        Get.toNamed('/progress');
-        break;
-    }
-  }
-  
-  void goToToday() {
-    
-    final int hour = DateTime.now().hour;
-
-    // Determine which route to navigate to based on the time of day
-    if (hour >= 6 && hour < 12) {
-      Future.microtask(() => Get.toNamed('/tasks'));
-    } else if (hour >= 12 && hour < 17) {
-      Future.microtask(() => Get.toNamed('/routine/:type'));
-    } else {
-      Future.microtask(() => Get.toNamed('/grateful'));
-    }
-  }
-}
+import 'controllers/nav_controller.dart';
 
 class CustomBottomNavBar extends StatelessWidget {
   final NavigationController navigationController = Get.put(NavigationController());
@@ -48,8 +14,8 @@ class CustomBottomNavBar extends StatelessWidget {
               NavigationRail(
                 selectedIndex: navigationController.currentIndex.value,
                 onDestinationSelected: navigationController.navigateToPage,
-                extended: true, // Show the labels next to the icons
-                labelType: NavigationRailLabelType.none, // Labels should be next to the icons
+                extended: true,
+                labelType: NavigationRailLabelType.none,
                 backgroundColor: const Color.fromARGB(255, 239, 229, 251),
                 selectedIconTheme: const IconThemeData(color: Color.fromARGB(255, 92, 64, 134)),
                 selectedLabelTextStyle: const TextStyle(color: Color.fromARGB(255, 92, 64, 134)),

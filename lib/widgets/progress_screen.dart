@@ -1,10 +1,13 @@
 import 'package:better_self/widgets/grateful_screen.dart';
-import 'package:better_self/widgets/tasks_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:better_self/nav_bar.dart';
 import 'package:better_self/app_bar.dart';
-import 'routine_screen.dart';
+import 'package:better_self/controllers/routine_controller.dart';
+import 'package:better_self/controllers/nav_controller.dart';
+import 'package:better_self/controllers/grateful_controller.dart';
+import 'package:better_self/controllers/task_controller.dart';
+
 
 class ProgressScreen extends StatelessWidget {
   

@@ -6,11 +6,14 @@ import 'widgets/start_screen.dart';
 import 'widgets/plan_screen.dart';
 import 'widgets/tasks_screen.dart';
 import 'widgets/routine_screen.dart';
-import 'widgets/edit_routine_screen.dart';
 import 'widgets/grateful_screen.dart';
 import 'widgets/routinetasks_screen.dart';
 import 'widgets/progress_screen.dart';
-import 'nav_bar.dart';
+
+import 'package:better_self/controllers/nav_controller.dart';
+import 'package:better_self/controllers/grateful_controller.dart';
+import 'package:better_self/controllers/name_controller.dart';
+
 
 Future<void> main() async {
   await Hive.initFlutter();
@@ -52,7 +55,6 @@ class MainApp extends StatelessWidget {
         GetPage(name: '/tasks', page: () => TaskScreen()),
         GetPage(name: '/routine', page: () => RoutineScreen()),
         GetPage(name: '/routine/:type', page: () => RoutineTaskScreen()),
-        GetPage(name: '/edit_routine', page: () => EditRoutineScreen()),
         GetPage(name: '/grateful', page: () => GratefulScreen()),
         GetPage(name: '/progress', page: () => ProgressScreen()),
       ],
