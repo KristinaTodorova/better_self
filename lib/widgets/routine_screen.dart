@@ -9,9 +9,13 @@ class RoutineScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    const double maxWidth = 1500;
     return Scaffold(
       appBar: const CustomAppBar(),
-      body: Padding(
+      body: Center(
+        child: ConstrainedBox(
+          constraints: BoxConstraints(maxWidth: maxWidth),
+          child: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -45,6 +49,8 @@ class RoutineScreen extends StatelessWidget {
               ),
             ),
           ],
+        ),
+      ),
         ),
       ),
     );

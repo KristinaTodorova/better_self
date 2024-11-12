@@ -19,11 +19,15 @@ class ProgressScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     const Color darkPurple = Color.fromARGB(255, 92, 64, 134);
     double screenWidth = MediaQuery.of(context).size.width;
+    const double maxWidth = 1500;
 
     return Scaffold(
       appBar: const CustomAppBar(),
-      body: Row(
-        children: [
+      body: Center(
+        child: ConstrainedBox(
+          constraints: BoxConstraints(maxWidth: maxWidth),
+          child: Row(
+          children: [
           if (screenWidth > 768)
             Obx(() => NavigationRail(
                   selectedIndex: Get.find<NavigationController>().currentIndex.value,
@@ -218,6 +222,8 @@ class ProgressScreen extends StatelessWidget {
             ),
           ),
         ],
+      ),
+        ),
       ),
       bottomNavigationBar: screenWidth <= 768 ? CustomBottomNavBar() : null,
     );

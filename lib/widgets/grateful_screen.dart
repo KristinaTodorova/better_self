@@ -15,10 +15,14 @@ class GratefulScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
+    const double maxWidth = 1500;
 
     return Scaffold(
       appBar: const CustomAppBar(),
-      body: Row(
+      body: Center(
+        child: ConstrainedBox(
+          constraints: BoxConstraints(maxWidth: maxWidth),
+          child: Row(
         children: [
           if (screenWidth > 768)
             CustomBottomNavBar(),
@@ -94,6 +98,8 @@ class GratefulScreen extends StatelessWidget {
             ),
           ),
         ],
+          ),
+        ),
       ),
       bottomNavigationBar: screenWidth <= 768 ? CustomBottomNavBar() : null,
     );
