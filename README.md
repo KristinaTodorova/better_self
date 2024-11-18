@@ -44,13 +44,17 @@ Below are some screenshots to give you a better understanding of the application
   ![Priority tasks](assets/priorities.png) 
 
 - **Gratitude Journal**
+
   ![Gratitude Journal](assets/gratefulness.png)
 
 - **Progress Screen**
+
   ![Progress Screen](assets/progress.png)
 
 - **Large Screen Overview**
+
   ![Large Priorities Screen](assets/largescreen.png)
+  
   ![Large Progress Screen](assets/progress_ls.png)
 
 
