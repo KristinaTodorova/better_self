@@ -10,7 +10,7 @@ The purpose of BetterSelf is to increase productivity and well-being by providin
 
 ## URL
 
-The application is deployed and available at: ![https://betterself.example.com](https://betterself.example.com)
+The application is deployed and available to test here: [BetterSelf App](https://kristinatodorova.github.io/).
 
 ## Features
 
@@ -37,7 +37,7 @@ Below are some screenshots to give you a better understanding of the application
 
 1. **Getting Started**: When first opening the application, you'll be prompted to enter your name and afterwards select a routine from the available choices.
 
-2. **The NOW Tag**: The "Now" Tab will guide you through your day and display a different app feature depending on the current time. In the morning, it will redirect you to the daily planner so you can plan your tasks. In the afternoon, it will display your chosen routine, so you can track your progress during the day. Finally, in the evening it will display the gratitude screen.
+2. **The NOW Tab**: The "Now" Tab will guide you through your day and display a different app feature depending on the current time. In the morning, it will redirect you to the daily planner so you can plan your tasks. In the afternoon, it will display your chosen routine, so you can track your progress during the day. Finally, in the evening it will display the gratitude screen.
 
 3. **Setting Priorities**: The "Plan Your Day" section will ask you to add up to three key tasks for the day. The "Law of Three" is employed to keep you focused without feeling overwhelmed.
 
