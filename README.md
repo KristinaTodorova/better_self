@@ -18,6 +18,18 @@ The application is deployed and available to test here: [BetterSelf App](https:/
 - **Gratitude Journal**: Users can write down things they are grateful for, enhancing positivity and mental well-being.
 - **Navigation Adaptability**: The app's navigation adapts to different screen sizes, switching between a bottom navigation bar and a side navigation rail for a more user-friendly experience.
 
+## How to Use
+
+1. **Getting Started**: When first opening the application, you'll be prompted to enter your name and afterwards select a routine from the available choices.
+
+2. **The NOW Tab**: The "Now" Tab will guide you through your day and display a different app feature depending on the current time. In the morning, it will redirect you to the daily planner so you can plan your tasks. In the afternoon, it will display your chosen routine, so you can track your progress during the day. Finally, in the evening it will display the gratitude screen.
+
+3. **Setting Priorities**: The "Plan Your Day" section will ask you to add up to three key tasks for the day. The "Law of Three" is employed to keep you focused without feeling overwhelmed.
+
+4. **Tracking Routines**: You can choose from a set of pre-defined routines that fit your goals (e.g., Morning Routine, Staying Fit). Once selected, you can track your daily progress and see what percentage of the routine you've completed in the Progress tab.
+
+5. **Expressing Gratitude**: At the end of the day, visit the "Gratefulness" section to write down things you are grateful for, helping you reflect positively on your day.
+
 ## Screenshots
 
 Below are some screenshots to give you a better understanding of the application interface:
@@ -56,19 +68,6 @@ Below are some screenshots to give you a better understanding of the application
   ![Large Priorities Screen](assets/largescreen.png)
   
   ![Large Progress Screen](assets/progress_ls.png)
-
-
-## How to Use
-
-1. **Getting Started**: When first opening the application, you'll be prompted to enter your name and afterwards select a routine from the available choices.
-
-2. **The NOW Tab**: The "Now" Tab will guide you through your day and display a different app feature depending on the current time. In the morning, it will redirect you to the daily planner so you can plan your tasks. In the afternoon, it will display your chosen routine, so you can track your progress during the day. Finally, in the evening it will display the gratitude screen.
-
-3. **Setting Priorities**: The "Plan Your Day" section will ask you to add up to three key tasks for the day. The "Law of Three" is employed to keep you focused without feeling overwhelmed.
-
-4. **Tracking Routines**: You can choose from a set of pre-defined routines that fit your goals (e.g., Morning Routine, Staying Fit). Once selected, you can track your daily progress and see what percentage of the routine you've completed in the Progress tab.
-
-5. **Expressing Gratitude**: At the end of the day, visit the "Gratefulness" section to write down things you are grateful for, helping you reflect positively on your day.
 
 ## Navigation
 
