@@ -8,8 +8,6 @@
 
 The purpose of BetterSelf is to increase productivity and well-being by providing a structured approach to daily planning. With its features that encourage users to focus on their top three tasks, stay fit, and maintain routines, BetterSelf aims to make achieving personal growth and developing better habits easier. Users are also encouraged to reflect on gratitude, which helps improve mental health and overall positivity.
 
-## URL
-
 The application is deployed and available to test here: [BetterSelf App](https://kristinatodorova.github.io/).
 
 ## Features
@@ -24,14 +22,37 @@ The application is deployed and available to test here: [BetterSelf App](https:/
 
 Below are some screenshots to give you a better understanding of the application interface:
 
-- **Home Screen**
-  ![Home Screen](placeholder_for_home_screen.png)
+- **Start Screen**
+
+  ![Start Screen](assets/start.png)
+
+- **Plan Screen**
+
+  ![Home Screen](assets/plan.png)
 
 - **Routine Picker**
-  ![Routine Picker](placeholder_for_routine_picker.png)
+
+  ![Routine Picker](assets/routines.png) 
+  ![Routine Picker](assets/routines_detailed.png)
+
+- **Daily Routine**
+
+  ![Daily Routine](assets/dailyroutine.png)
+
+- **Priorities for the day**
+
+  ![Priority tasks](assets/priorities.png) 
 
 - **Gratitude Journal**
-  ![Gratitude Journal](placeholder_for_gratitude_journal.png)
+  ![Gratitude Journal](assets/gratefulness.png)
+
+- **Progress Screen**
+  ![Progress Screen](assets/progress.png)
+
+- **Large Screen Overview**
+  ![Large Priorities Screen](assets/largescreen.png)
+  ![Large Progress Screen](assets/progress_ls.png)
+
 
 ## How to Use
 

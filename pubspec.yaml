@@ -25,3 +25,14 @@ flutter:
   assets:
     - assets/logo.png
     - assets/mindful.png
+    - assets/dailyroutine.png
+    - assets/gratefulness.png
+    - assets/largescreen.png
+    - assets/plan.png
+    - assets/priorities.png
+    - assets/progress_ls.png
+    - assets/progress.png
+    - assets/routines_detailed.png
+    - assets/routines.png
+    - assets/start.png
+

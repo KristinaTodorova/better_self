@@ -36,7 +36,7 @@ class StartScreen extends StatelessWidget {
                 ),
                 const SizedBox(height: 30),
                 Image.asset(
-                  'mindful.png',
+                  'assets/mindful.png',
                   height: 150,
                   width: 150,
                   fit: BoxFit.contain,
